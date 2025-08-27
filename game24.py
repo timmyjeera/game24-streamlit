@@ -1,5 +1,6 @@
 import streamlit as st
 import itertools
+import random
 
 def can_make_24(numbers):
     for nums in itertools.permutations(numbers):
@@ -20,7 +21,18 @@ def can_make_24(numbers):
     return False, None
 
 st.title("เกม 24")
-numbers_input = st.text_input("กรอกตัวเลข 4 ตัว (คั่นด้วยช่องว่าง):")
+
+# สุ่มตัวเลข
+if st.button("สุ่มตัวเลข 4 ตัว"):
+    random_numbers = [random.randint(1, 9) for _ in range(4)]
+    st.session_state.random_numbers = random_numbers
+
+# แสดงตัวเลขที่สุ่มได้
+if "random_numbers" in st.session_state:
+    st.write("ตัวเลขที่สุ่มได้:", st.session_state.random_numbers)
+    numbers_input = " ".join(map(str, st.session_state.random_numbers))
+else:
+    numbers_input = st.text_input("กรอกตัวเลข 4 ตัว (คั่นด้วยช่องว่าง):")
 
 if numbers_input:
     try:
