@@ -27,7 +27,7 @@ if st.button("สุ่มตัวเลข 4 ตัว"):
     st.session_state.random_numbers = [random.randint(1, 9) for _ in range(4)]
 
 # ปุ่มกลับไปกรอกเอง
-if st.button("กลับไปกรอกตัวเลขเอง"):
+if st.button("กรอกตัวเลขเอง"):
     st.session_state.random_numbers = None
 
 # ถ้ามีตัวเลขสุ่ม
