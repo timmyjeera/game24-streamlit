@@ -2,6 +2,24 @@ import streamlit as st
 import itertools
 import random
 
+
+st.markdown(
+    """
+    <style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+   
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+
 def can_make_24(numbers):
     for nums in itertools.permutations(numbers):
         for ops in itertools.product(['+', '-', '*', '/'], repeat=3):
