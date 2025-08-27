@@ -22,22 +22,18 @@ def can_make_24(numbers):
 
 st.title("เกม 24")
 
-# ปุ่มสุ่มตัวเลข
+# สุ่มตัวเลข
 if st.button("สุ่มตัวเลข 4 ตัว"):
-    st.session_state.random_numbers = [random.randint(1, 9) for _ in range(4)]
+    random_numbers = [random.randint(1, 9) for _ in range(4)]
+    st.session_state.random_numbers = random_numbers
 
-# ปุ่มกลับไปกรอกเอง
-if st.button("กรอกตัวเลขเอง"):
-    st.session_state.random_numbers = None
-
-# ถ้ามีตัวเลขสุ่ม
-if "random_numbers" in st.session_state and st.session_state.random_numbers:
-    st.write("ตัวเลขที่สุ่มได้:", st.session_state.random_numbers)
+# แสดงตัวเลขที่สุ่มได้
+if "random_numbers" in st.session_state:
+st.write("ตัวเลขที่สุ่มได้:", [f"{i+1}: {num}" for i, num in enumerate(st.session_state.random_numbers)])
     numbers_input = " ".join(map(str, st.session_state.random_numbers))
 else:
     numbers_input = st.text_input("กรอกตัวเลข 4 ตัว (คั่นด้วยช่องว่าง):")
 
-# ตรวจสอบและแสดงผล
 if numbers_input:
     try:
         numbers = list(map(int, numbers_input.strip().split()))
@@ -46,8 +42,7 @@ if numbers_input:
         else:
             result, expression = can_make_24(numbers)
             if result:
-                with st.expander("ดูเฉลย"):
-                    st.success(f"สามารถสร้าง 24 ได้โดยใช้: {expression}")
+                st.success(f"สามารถสร้าง 24 ได้โดยใช้: {expression}")
             else:
                 st.warning("ไม่สามารถสร้าง 24 ได้จากตัวเลขที่ให้มา")
     except ValueError:
