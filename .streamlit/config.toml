@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#FF69B4"  # ชมพูสด
+backgroundColor = "#FFF8DC"  # ครีมอ่อน
+secondaryBackgroundColor = "#FFDAB9"  # พีชอ่อน
+textColor = "#4B0082"  # ม่วงเข้ม
+font = "monospace"
