@@ -6,11 +6,11 @@ def can_make_24(numbers):
     for nums in itertools.permutations(numbers):
         for ops in itertools.product(['+', '-', '*', '/'], repeat=3):
             expressions = [
-                f"(({nums[0]}{ops[0]}{nums[1]}){ops[1]}{nums[2]}){ops[2]}{nums[3]}",
-                f"({nums[0]}{ops[0]}({nums[1]}{ops[1]}{nums[2]})){ops[2]}{nums[3]}",
-                f"{nums[0]}{ops[0]}(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]})",
-                f"{nums[0]}{ops[0]}({nums[1]}{ops[1]}({nums[2]}{ops[2]}{nums[3]}))",
-                f"({nums[0]}{ops[0]}{nums[1]}){ops[1]}({nums[2]}{ops[2]}{nums[3]})"
+                f"(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]}){ops[3]}{nums[4]}",
+                f"(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]}){ops[3]}{nums[4]}",
+                f"(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]}){ops[3]}{nums[4]}",
+                f"(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]}){ops[3]}{nums[4]}",
+                f"(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]}){ops[3]}{nums[4]}",
             ]
             for expr in expressions:
                 try:
