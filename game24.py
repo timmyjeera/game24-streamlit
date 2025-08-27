@@ -52,3 +52,24 @@ if numbers_input:
                 st.warning("ไม่สามารถสร้าง 24 ได้จากตัวเลขที่ให้มา")
     except ValueError:
         st.error("กรุณากรอกเฉพาะตัวเลขเท่านั้น")
+
+#ตกแต่ง
+st.markdown(
+    """
+    <style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    h1 {
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown("<h1>เกม 24</h1>", unsafe_allow_html=True)
