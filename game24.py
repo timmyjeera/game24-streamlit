@@ -2,33 +2,15 @@ import streamlit as st
 import itertools
 import random
 
-
-st.markdown(
-    """
-    <style>
-    body {
-        background-image: url("https://thfvnext.bing.com/th/id/OIP.xm3zMQTbXmiqfp8shqdEkgAAAA?cb=thfvnext&rs=1&pid=ImgDetMain&o=7&rm=3");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-   
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
-
 def can_make_24(numbers):
     for nums in itertools.permutations(numbers):
         for ops in itertools.product(['+', '-', '*', '/'], repeat=3):
             expressions = [
                 f"(({nums[0]}{ops[0]}{nums[1]}){ops[1]}{nums[2]}){ops[2]}{nums[3]}",
-                f"(({nums[0]}{ops[0]}{nums[1]}){ops[1]}{nums[2]}){ops[2]}{nums[3]}",
-                f"(({nums[0]}{ops[0]}{nums[1]}){ops[1]}{nums[2]}){ops[2]}{nums[3]}",
-                f"(({nums[0]}{ops[0]}{nums[1]}){ops[1]}{nums[2]}){ops[2]}{nums[3]}",
-                f"(({nums[0]}{ops[0]}{nums[1]}){ops[1]}{nums[2]}){ops[2]}{nums[3]}",
+                f"({nums[0]}{ops[0]}({nums[1]}{ops[1]}{nums[2]})){ops[2]}{nums[3]}",
+                f"{nums[0]}{ops[0]}(({nums[1]}{ops[1]}{nums[2]}){ops[2]}{nums[3]})",
+                f"{nums[0]}{ops[0]}({nums[1]}{ops[1]}({nums[2]}{ops[2]}{nums[3]}))",
+                f"({nums[0]}{ops[0]}{nums[1]}){ops[1]}({nums[2]}{ops[2]}{nums[3]})"
             ]
             for expr in expressions:
                 try:
